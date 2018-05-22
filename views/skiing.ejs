@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <% include ./partials/header %>
+ </head>
+ <body>
+   <header>
+     <% include ./partials/navbar %>
+   </header>
+   <h1 class='center'>My Brands</h1>
+   <hr />
+   <div class='row'>
+     <div class='col s12 m4'>
+       <h3>Add Brand</h3>
+       <form action='/skiing' method='post'>
+         <input type='text' name='brand' placeholder='Brand' />
+         <button class='btn btn-waves' type='submit'>Add</button>
+       </form>
+     </div>
+     <table class='table col m8 s12'>
+       <thead>
+         <th>Brand</th>
+         <th>Edit</th>
+         <th>x</th>
+       </thead>
+       <tbody>
+         <% skiing.forEach( function(ski) { %>
+         <% var url = "/skiing/" + ski.id + "?_method=DELETE" %>
+         <% var editUrl = "/skiing/" + ski.id + "/edit" %>
+           <tr>
+             <td><%= ski.brand %></td>
+             <td>
+               <a class="btn" href="<%= editUrl %>">Edit</a>
+             </td>
+             <td>
+               <form method="POST" action="<%= url %>" >
+                 <button class="btn red">Delete</button>
+               </form>
+             </td>
+           </tr>
+         <% }); %>
+       </tbody>
+     </table>
+   </body>
+</html>

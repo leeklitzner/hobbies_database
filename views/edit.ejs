@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <% include ./partials/header %>
+  </head>
+  <body>
+    <header>
+      <% include ./partials/navbar %>
+    </header>
+    <div class="container">
+      <% var url = "/skiing/" + ski.id + "?_method=PUT" %>
+      <form method="POST" action="<%= url %>" >
+        <input required name="brand" value=<%= ski.brand %> />
+        <a href="/skiing" class="btn red">Cancel</a>
+        <button class="btn">Save</button>
+      </form>
+    </div>
+  </body>
+</html>
